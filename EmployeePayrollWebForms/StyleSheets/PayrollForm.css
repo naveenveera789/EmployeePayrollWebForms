@@ -15,8 +15,7 @@ input[type=text]
     color:navy;
 }
 .sec2 {
-    border: 3px solid White;
-    background-color: White;
+    background-color: white;
     margin-left: 300px;
     margin-right: 340px;
     margin-top: 15px;
@@ -48,10 +47,17 @@ input[type=text]
 footer{
     margin-top:0px;
 }
-.btn btn-secondary {
-    top: 929px;
-    left: 606px;
-    width: 61px;
-    height: 26px;
-    color: #FFFFFF;
+.button {
+    background-color: #E2E2E2;
+}
+.button:hover {
+    background-color: #969696;
+    transition: 0.3s;
+}
+.submit {
+    background-color: #E2E2E2;
+}
+.submit:hover{
+    background-color:yellowgreen;
+    transition: 0.3s;
 }

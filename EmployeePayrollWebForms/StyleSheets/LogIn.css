@@ -23,3 +23,10 @@ input[type=text], input[type=password] {
 footer{
     margin-top: 0px;
 }
+.lbn{
+    text-decoration:none;
+}
+.signup:hover{
+    background-color:gainsboro;
+    transition:0.3s;
+}
