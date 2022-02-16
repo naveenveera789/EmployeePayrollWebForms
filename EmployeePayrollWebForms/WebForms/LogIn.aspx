@@ -13,12 +13,12 @@
     <div>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Email Required" ControlToValidate="TextBox1" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Enter Correct Email" ControlToValidate="TextBox1" ForeColor="Red" ValidationExpression="[a-z0-9]+(.[a-z0-9]+)?@[a-z]+[.][a-z]{3}"></asp:RegularExpressionValidator>
-        <asp:TextBox ID="TextBox1" type="text" placeholder="Email or Phone" runat="server" name="email"></asp:TextBox>    
+        <asp:TextBox ID="TextBox1" type="text" placeholder="Email" runat="server" name="email" ToolTip="Please Enter Email"></asp:TextBox>    
     </div>
     <div>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password Required" ForeColor="Red" Display="Dynamic" ControlToValidate="TextBox2"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="Enter Correct Password" ControlToValidate="TextBox2" ForeColor="Red" ValidationExpression="(?=.*[A-Z]).{8,}"></asp:RegularExpressionValidator>
-        <asp:TextBox ID="TextBox2" placeholder="Password" TextMode="Password" runat="server"></asp:TextBox>
+        <asp:TextBox ID="TextBox2" placeholder="Password" type="password" name="Password" runat="server" ToolTip="Please Enter Password"></asp:TextBox>
     </div>
     <div>
         <asp:LinkButton ID="LinkButton1" CssClass="lbn" runat="server">Forgot Password?</asp:LinkButton>
@@ -30,7 +30,7 @@
     <div>
         <asp:Button ID="Button2" runat="server" class="btn signup" OnClick="Button2_Click" Text="Create Account" />
         &emsp;&nbsp;
-        <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Login" Width="71px" />
+        <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Login" Width="71px" OnClick="Button1_Click" />
     </div>
     </div>
 </asp:Content>

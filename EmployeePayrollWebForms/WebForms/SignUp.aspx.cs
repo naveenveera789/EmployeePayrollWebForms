@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
 namespace EmployeePayrollWebForms.WebForms
@@ -11,13 +12,7 @@ namespace EmployeePayrollWebForms.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
-            {
-                string Password = TextBox4.Text;
-                string Confirm = TextBox5.Text;
-                TextBox4.Attributes.Add("value", Password);
-                TextBox5.Attributes.Add("value", Confirm);
-            }
+           
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
@@ -26,7 +21,7 @@ namespace EmployeePayrollWebForms.WebForms
 
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if(CheckBox2.Checked == true)
+            /*if(CheckBox2.Checked == true)
             {
                 TextBox4.TextMode = TextBoxMode.SingleLine;
                 TextBox5.TextMode = TextBoxMode.SingleLine;
@@ -35,7 +30,7 @@ namespace EmployeePayrollWebForms.WebForms
             {
                 TextBox4.TextMode = TextBoxMode.Password;
                 TextBox5.TextMode = TextBoxMode.Password;
-            }
+            }*/
             /*string passwordText = null, confirmPassText = null;
             if (CheckBox2.Checked)
             {
@@ -51,6 +46,36 @@ namespace EmployeePayrollWebForms.WebForms
                 TextBox5.TextMode = TextBoxMode.Password;
                 TextBox5.Text = confirmPassText;
             }*/
+            /*if(ViewState["password"]!=null)
+            {
+                TextBox4.Text = ViewState["password"].ToString();
+            }
+            if(ViewState["confirm"]!=null)
+            {
+                TextBox5.Text = ViewState["confirm"].ToString();
+            }*/
+        }
+
+        public static string connectionString = @"server=(localdb)\MSSQLLocalDB;Database=WebForms;Integrated Security=True;";
+        SqlConnection connection = new SqlConnection(connectionString);
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("SignUpDetails", this.connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@FirstName", TextBox2.Text);
+            command.Parameters.AddWithValue("@LastName", TextBox3.Text);
+            command.Parameters.AddWithValue("@Email", TextBox1.Text);
+            command.Parameters.AddWithValue("@Password", TextBox4.Text);
+            command.Parameters.AddWithValue("@ConfirmPassword", TextBox5.Text);
+            this.connection.Open();
+            var result = command.ExecuteNonQuery();
+            if(result != 0)
+            {
+                Label1.Text = "!!! Details inserted succesfully into the database !!!";
+                Label1.ForeColor = System.Drawing.Color.SteelBlue;
+            }
+            this.connection.Close();
         }
     }
 }

@@ -57,7 +57,7 @@ footer{
 .submit {
     background-color: #E2E2E2;
 }
-.submit:hover{
-    background-color:yellowgreen;
+.submit:hover {
+    background-color: #82A70C;
     transition: 0.3s;
 }

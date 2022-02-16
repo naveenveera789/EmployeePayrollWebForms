@@ -11,11 +11,20 @@ namespace EmployeePayrollWebForms.WebForms
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //TextBox1.Text = Request.QueryString["LoginName"];
+            if(IsPostBack && ViewState["EmailId"]!=null)
+            {
+                TextBox1.Text = ViewState["EmailId"].ToString();
+            } 
         }
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("SignUp.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            ViewState["EmailId"] = TextBox1.Text;
         }
     }
 }
