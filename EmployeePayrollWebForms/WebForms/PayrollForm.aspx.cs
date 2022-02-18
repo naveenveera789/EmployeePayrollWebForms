@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -55,5 +57,34 @@ namespace EmployeePayrollWebForms.WebForms
         {
             FillDays();
         }
+
+        static string connectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
+        SqlConnection connection = new SqlConnection(connectionString);
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("PayformCredentials", this.connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@NAME", TextBox1.Text);
+            command.Parameters.AddWithValue("@GENDER", RadioButtonList2.SelectedValue);
+            command.Parameters.AddWithValue("@DEPARTMENT", CheckBoxList1.SelectedValue);
+            command.Parameters.AddWithValue("@SALARY", DropDownList1.SelectedValue);
+            command.Parameters.AddWithValue("@STARTDATE", (ddlDay.SelectedValue,ddlMonth.SelectedValue,ddlYear.SelectedValue));
+            command.Parameters.AddWithValue("@NOTES", TextBox2.Text);
+            this.connection.Open();
+            var result = command.ExecuteNonQuery();
+            if (result != 0)
+            {
+                Label8.Text = "!!! Payform Details inserted succesfully into the database !!!";
+                Label8.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                Label8.Text = "!!! Details are not inserted into the database !!!";
+                Label8.ForeColor = System.Drawing.Color.Red;
+            }
+            this.connection.Close();
+        }
+
     }
 }

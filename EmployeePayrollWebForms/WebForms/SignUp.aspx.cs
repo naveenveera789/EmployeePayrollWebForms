@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace EmployeePayrollWebForms.WebForms
 {
@@ -56,7 +57,7 @@ namespace EmployeePayrollWebForms.WebForms
             }*/
         }
 
-        public static string connectionString = @"server=(localdb)\MSSQLLocalDB;Database=WebForms;Integrated Security=True;";
+        static string connectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
         SqlConnection connection = new SqlConnection(connectionString);
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -66,14 +67,19 @@ namespace EmployeePayrollWebForms.WebForms
             command.Parameters.AddWithValue("@FirstName", TextBox2.Text);
             command.Parameters.AddWithValue("@LastName", TextBox3.Text);
             command.Parameters.AddWithValue("@Email", TextBox1.Text);
+            command.Parameters.AddWithValue("@Phone", TextBox6.Text);
             command.Parameters.AddWithValue("@Password", TextBox4.Text);
-            command.Parameters.AddWithValue("@ConfirmPassword", TextBox5.Text);
             this.connection.Open();
             var result = command.ExecuteNonQuery();
             if(result != 0)
             {
-                Label1.Text = "!!! Details inserted succesfully into the database !!!";
-                Label1.ForeColor = System.Drawing.Color.SteelBlue;
+                Label1.Text = "!!! Account Details inserted succesfully into the database !!!";
+                Label1.ForeColor = System.Drawing.Color.Green;
+            }
+            else
+            {
+                Label1.Text = "!!! Details are not inserted into the database !!!";
+                Label1.ForeColor = System.Drawing.Color.Red;
             }
             this.connection.Close();
         }

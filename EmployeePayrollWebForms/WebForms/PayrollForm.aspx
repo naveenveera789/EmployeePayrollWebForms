@@ -68,7 +68,6 @@
             <asp:DropDownList ID="ddlDay" required="required" runat="server" Height="36px" Width="90px">
             </asp:DropDownList>
             <asp:DropDownList ID="ddlMonth" required="required" runat="server" Height="36px" Width="90px" OnSelectedIndexChanged="ddlMonth_SelectedIndexChanged" AutoPostBack="true">
-                <asp:ListItem Value="MONTH"></asp:ListItem>
             </asp:DropDownList>
             <asp:DropDownList ID="ddlYear" required="required" runat="server" Height="36px" Width="90px" OnSelectedIndexChanged="ddlYear_SelectedIndexChanged" AutoPostBack="true">              
             </asp:DropDownList>
@@ -83,9 +82,12 @@
         <div>
             <asp:Button ID="Button1" runat="server" class="btn button" Text="Cancel" Width="120px" />
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;
-            <asp:Button ID="Button2" runat="server" class="btn submit" Text="Submit" Width="120px" />
+            <asp:Button ID="Button2" runat="server" class="btn submit" Text="Submit" Width="120px" OnClick="Button2_Click" />
             &ensp;
             <asp:Button ID="Button3" runat="server" class="btn button" Text="Reset" Width="120px" />
+        </div>
+        <div>
+            <asp:Label ID="Label8" runat="server"></asp:Label>
         </div>
     </form>
     </div>

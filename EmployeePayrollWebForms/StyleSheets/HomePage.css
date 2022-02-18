@@ -1,2 +1,13 @@
 ﻿body {
 }
+.heading {
+    color: #42515F;
+    margin-top: 30px;
+    margin-left: 188px;
+    width: 217px;
+    height: 37px;
+    font: normal normal bold 28px/25px Roboto;
+}
+.table{
+    
+}

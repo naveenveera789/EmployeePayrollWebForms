@@ -32,5 +32,8 @@
         &emsp;&nbsp;
         <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Login" Width="71px" OnClick="Button1_Click" />
     </div>
+    <div>
+        <asp:Label ID="Label1" runat="server"></asp:Label>
+    </div>
     </div>
 </asp:Content>

@@ -21,6 +21,10 @@
         <asp:TextBox ID="TextBox1" placeholder="Enter Email" type="text" name="username" runat="server" Width="438px" required="required" ToolTip="Please Enter Email"></asp:TextBox>
     </div>
     <div>
+        <asp:RegularExpressionValidator ID="RegularExpressionValidator6" runat="server" ErrorMessage="Enter correct Mobile Number" ControlToValidate="TextBox6" ForeColor="Red" ValidationExpression="[6-9]{1}[0-9]{9}"></asp:RegularExpressionValidator>
+        <asp:TextBox ID="TextBox6" placeholder="Enter Mobile Number" type="text" name="Phone" runat="server" Width="438px" required="required" ToolTip="Please Enter Mobile Number"></asp:TextBox>
+    </div>
+    <div>
         <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" ErrorMessage="Enter Strong Password" ControlToValidate="TextBox4" ForeColor="Red" ValidationExpression="(?=.*[A-Z]).{8,}"></asp:RegularExpressionValidator>
         &emsp;&emsp;&emsp;&ensp;<asp:RegularExpressionValidator ID="RegularExpressionValidator5" runat="server" ErrorMessage="Enter Strong Password" ControlToValidate="TextBox5" ForeColor="Red" ValidationExpression="(?=.*[A-Z]).{8,}"></asp:RegularExpressionValidator>
         <asp:TextBox ID="TextBox4" type="password" placeholder="Enter Password" name="Password" runat="server" required="required" ToolTip="Please Enter Strong Password"></asp:TextBox>
@@ -37,7 +41,7 @@
         <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Sign Up" OnClick="Button1_Click" />
     </div>
     <div>
-        &emsp;<asp:Label ID="Label1" runat="server"></asp:Label>
+        &ensp;<asp:Label ID="Label1" runat="server"></asp:Label>
     </div>
     </div>
 </asp:Content>

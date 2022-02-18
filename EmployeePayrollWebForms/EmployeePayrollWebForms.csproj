@@ -145,6 +145,7 @@
     <Content Include="StyleSheets\PayrollForm.css" />
     <Content Include="StyleSheets\SignUp.css" />
     <Content Include="UserControl.ascx" />
+    <Content Include="WebForms\DashBoard.aspx" />
     <Content Include="WebForms\HomePage.aspx" />
     <Content Include="WebForms\LogIn.aspx" />
     <Content Include="WebForms\PayrollForm.aspx" />
@@ -246,6 +247,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForms\DashBoard.aspx.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForms\DashBoard.aspx.designer.cs">
+      <DependentUpon>DashBoard.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebForms\HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
