@@ -19,10 +19,10 @@
             <asp:Label ID="Label2" runat="server" Text="Profile image"></asp:Label>
             &ensp;
             <asp:RadioButtonList ID="RadioButtonList1" runat="server" required="required" CellPadding="1" CellSpacing="1" RepeatDirection="Horizontal" RepeatLayout="Flow" CssClass="rbl" ToolTip="Please Select Profile Image">
-                <asp:ListItem> <img src="../Assets/profile-images/Female (1).png" alt="img1"/> </asp:ListItem>
-                <asp:ListItem> <img src="../Assets/profile-images/Male (4).png" alt="img2"/></asp:ListItem>
-                <asp:ListItem> <img src="../Assets/profile-images/Female (4).png" alt="img3"/></asp:ListItem>
-                <asp:ListItem> <img src="../Assets/profile-images/Male (5).png" alt="img4"/></asp:ListItem>
+                <asp:ListItem Value="../Assets/profile-images/Female (1).png"> <img src="../Assets/profile-images/Female (1).png" alt="img1"/> </asp:ListItem>
+                <asp:ListItem Value="../Assets/profile-images/Male (4).png"> <img src="../Assets/profile-images/Male (4).png" alt="img2"/></asp:ListItem>
+                <asp:ListItem Value="../Assets/profile-images/Female (4).png"> <img src="../Assets/profile-images/Female (4).png" alt="img3"/></asp:ListItem>
+                <asp:ListItem Value="../Assets/profile-images/Male (5).png"> <img src="../Assets/profile-images/Male (5).png" alt="img4"/></asp:ListItem>
             </asp:RadioButtonList>
         </div>
         <br /><br />
@@ -30,8 +30,8 @@
             <asp:Label ID="Label3" runat="server" Text="Gender"></asp:Label>
             &emsp;&emsp;&nbsp;
             <asp:RadioButtonList ID="RadioButtonList2" required="required" runat="server" RepeatDirection="Horizontal" CellPadding="1" CellSpacing="1" RepeatLayout="Flow" CssClass="rbm" ToolTip="Please Select Your Gender">
-                <asp:ListItem>Male</asp:ListItem>
-                <asp:ListItem>Female</asp:ListItem>
+                <asp:ListItem Text="Male" Value="Male"></asp:ListItem>
+                <asp:ListItem Text="Female" Value="Female"></asp:ListItem>
             </asp:RadioButtonList>
         </div>
         <br />
@@ -39,11 +39,11 @@
             <asp:Label ID="Label4" runat="server" Text="Department"></asp:Label>
             &emsp;
             <asp:CheckBoxList ID="CheckBoxList1" required="required" runat="server" CellPadding="1" CellSpacing="1" RepeatDirection="Horizontal" RepeatLayout="Flow" CssClass="rbn" ToolTip="Please Select Your Working Departments">
-                <asp:ListItem>HR</asp:ListItem>
-                <asp:ListItem>Sales</asp:ListItem>
-                <asp:ListItem>Finance</asp:ListItem>
-                <asp:ListItem>Engineer</asp:ListItem>
-                <asp:ListItem>Others</asp:ListItem>
+                <asp:ListItem Text="HR" Value="HR"></asp:ListItem>
+                <asp:ListItem Text="Sales" Value="Sales"></asp:ListItem>
+                <asp:ListItem Text="Finance" Value="Finance"></asp:ListItem>
+                <asp:ListItem Text="Engineer" Value="Engineer"></asp:ListItem>
+                <asp:ListItem Text="Others" Value="Others"></asp:ListItem>
             </asp:CheckBoxList>
         </div>
         <br />
@@ -52,13 +52,13 @@
             &emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;
             <asp:DropDownList ID="DropDownList1" required="required" runat="server" Width="250px" Height="36px" ToolTip="Please Select Your Current Salary">
                 <asp:ListItem>Select Salary</asp:ListItem>
-                <asp:ListItem Value="10000">₹ 10,000</asp:ListItem>
-                <asp:ListItem Value="12000">₹ 12,000</asp:ListItem>
-                <asp:ListItem Value="15000">₹ 15,000</asp:ListItem>
-                <asp:ListItem Value="18000">₹ 18,000</asp:ListItem>
-                <asp:ListItem Value="20000">₹ 20,000</asp:ListItem>
-                <asp:ListItem Value="22000">₹ 22,000</asp:ListItem>
-                <asp:ListItem Value="25000">₹ 25,000</asp:ListItem>
+                <asp:ListItem Text="₹ 10,000" Value="10000"></asp:ListItem>
+                <asp:ListItem Text="₹ 12,000" Value="12000"></asp:ListItem>
+                <asp:ListItem Text="₹ 15,000" Value="15000"></asp:ListItem>
+                <asp:ListItem Text="₹ 18,000" Value="18000"></asp:ListItem>
+                <asp:ListItem Text="₹ 20,000" Value="20000"></asp:ListItem>
+                <asp:ListItem Text="₹ 22,000" Value="22000"></asp:ListItem>
+                <asp:ListItem Text="₹ 25,000" Value="25000"></asp:ListItem>
             </asp:DropDownList>
         </div>
         <br />

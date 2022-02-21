@@ -19,6 +19,7 @@ namespace EmployeePayrollWebForms.WebForms
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("SignUp.aspx");
+            //Server.Transfer();
         }
 
         static string connectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;

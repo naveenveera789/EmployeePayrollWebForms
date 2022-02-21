@@ -63,18 +63,37 @@ namespace EmployeePayrollWebForms.WebForms
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            SqlCommand command = new SqlCommand("PayformCredentials", this.connection);
+            SqlCommand command = new SqlCommand("PayformCredentials", connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@NAME", TextBox1.Text);
+            command.Parameters.AddWithValue("@IMG", RadioButtonList1.SelectedValue);
             command.Parameters.AddWithValue("@GENDER", RadioButtonList2.SelectedValue);
-            command.Parameters.AddWithValue("@DEPARTMENT", CheckBoxList1.SelectedValue);
+            string checkList = "";
+            for(int i=0; i< CheckBoxList1.Items.Count; i++)
+            {
+                if(CheckBoxList1.Items[i].Selected)
+                {
+                    if(checkList == "")
+                    {
+                        checkList = CheckBoxList1.Items[i].Value;
+                    }
+                    else
+                    {
+                        checkList += " " + CheckBoxList1.Items[i].Value;
+                    }
+                }
+            }
+            command.Parameters.AddWithValue("@DEPARTMENT", checkList);
             command.Parameters.AddWithValue("@SALARY", DropDownList1.SelectedValue);
-            command.Parameters.AddWithValue("@STARTDATE", (ddlDay.SelectedValue,ddlMonth.SelectedValue,ddlYear.SelectedValue));
+            command.Parameters.AddWithValue("@START_DATE", ddlDay.SelectedValue + "/" + ddlMonth.SelectedValue + "/" + ddlYear.SelectedValue);
             command.Parameters.AddWithValue("@NOTES", TextBox2.Text);
-            this.connection.Open();
+            connection.Open();
             var result = command.ExecuteNonQuery();
             if (result != 0)
             {
+                //var datareader = command.ExecuteReader();
+                //Session["payroll"] = datareader;
+                Response.Redirect("HomePage.aspx");
                 Label8.Text = "!!! Payform Details inserted succesfully into the database !!!";
                 Label8.ForeColor = System.Drawing.Color.Green;
             }
@@ -83,8 +102,7 @@ namespace EmployeePayrollWebForms.WebForms
                 Label8.Text = "!!! Details are not inserted into the database !!!";
                 Label8.ForeColor = System.Drawing.Color.Red;
             }
-            this.connection.Close();
+            connection.Close();
         }
-
     }
 }

@@ -4,10 +4,20 @@
     color: #42515F;
     margin-top: 30px;
     margin-left: 188px;
-    width: 217px;
-    height: 37px;
-    font: normal normal bold 28px/25px Roboto;
+    width: 200px;
+    height: 28px;
+    font: normal normal bold 22px/19px Roboto;
 }
-.table{
-    
+.addUser {
+    background-color: #82A70C;
+    text-align: center;
+    color: #FFFFFF;
+    margin-left: 972px;
+    margin-top: -75px;
+    width: 170px;
+    height: 43px;
+    font: normal normal normal 22px/19px Roboto;
+}
+.table2 {
+
 }
