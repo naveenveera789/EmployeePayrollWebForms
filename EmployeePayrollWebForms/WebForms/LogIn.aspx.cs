@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Web.Security;
 
 namespace EmployeePayrollWebForms.WebForms
 {
@@ -19,42 +20,40 @@ namespace EmployeePayrollWebForms.WebForms
         protected void Button2_Click(object sender, EventArgs e)
         {
             Response.Redirect("SignUp.aspx");
-            //Server.Transfer();
         }
 
         static string connectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
         SqlConnection connection = new SqlConnection(connectionString);
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected bool AuthenticateUser(string Email, string Password)
         {
             SqlCommand command = new SqlCommand("LogInCredentials", this.connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
-            command.Parameters.AddWithValue("@Email", TextBox1.Text);
-            command.Parameters.AddWithValue("@Password", TextBox2.Text);
+            SqlParameter parameterEmail = new SqlParameter("@Email", Email);
+            SqlParameter parameterPassword = new SqlParameter("@Password", Password);
+            command.Parameters.Add(parameterEmail);
+            command.Parameters.Add(parameterPassword);
             this.connection.Open();
-            var datareader = command.ExecuteReader();
-            /*SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataSet dataSet = new DataSet();
-            adapter.Fill(dataSet, "EmployeeDetails");*/
-            if (datareader != null)
+            int ReturnCode = (int)command.ExecuteScalar();
+            return ReturnCode == 1;
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if (AuthenticateUser(TextBox1.Text, TextBox2.Text))
             {
-                Session["data"] = datareader;
-                //Application["data"] = dataSet;
-                Response.Redirect("HomePage.aspx");
-                //GridView1.DataSource = datareader;
-                //GridView1.DataBind();
-                //Label1.Text = "!!! Log in Succesful !!!";
-                //Label1.ForeColor = System.Drawing.Color.Green;
+                FormsAuthentication.RedirectFromLoginPage(TextBox1.Text, CheckBox1.Checked);
             }
             else
             {
-                Label1.Text = "!!! Log in credentials are not in the database !!!";
-                Label1.ForeColor = System.Drawing.Color.Red;
+                Response.Redirect("HomePage.aspx");
+                Label1.Text = "Login Succesful";
             }
-            this.connection.Close();
-            //Session["email"] = TextBox1.Text;
-            //Session["password"] = TextBox2.Text;
-            //Response.Redirect("HomePage.aspx");
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -22,39 +22,16 @@ namespace EmployeePayrollWebForms.WebForms
 
         protected void CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
-            /*if(CheckBox2.Checked == true)
+            if(CheckBox2.Checked)
             {
                 TextBox4.TextMode = TextBoxMode.SingleLine;
                 TextBox5.TextMode = TextBoxMode.SingleLine;
-            }
-            if(CheckBox2.Checked == false)
-            {
-                TextBox4.TextMode = TextBoxMode.Password;
-                TextBox5.TextMode = TextBoxMode.Password;
-            }*/
-            /*string passwordText = null, confirmPassText = null;
-            if (CheckBox2.Checked)
-            {
-                TextBox4.TextMode = TextBoxMode.SingleLine;
-                passwordText = TextBox4.Text;
-                TextBox5.TextMode = TextBoxMode.SingleLine;
-                confirmPassText = TextBox5.Text;
             }
             else
             {
                 TextBox4.TextMode = TextBoxMode.Password;
-                TextBox4.Text = passwordText;
                 TextBox5.TextMode = TextBoxMode.Password;
-                TextBox5.Text = confirmPassText;
-            }*/
-            /*if(ViewState["password"]!=null)
-            {
-                TextBox4.Text = ViewState["password"].ToString();
             }
-            if(ViewState["confirm"]!=null)
-            {
-                TextBox5.Text = ViewState["confirm"].ToString();
-            }*/
         }
 
         static string connectionString = ConfigurationManager.ConnectionStrings["myConnection"].ConnectionString;
@@ -70,16 +47,14 @@ namespace EmployeePayrollWebForms.WebForms
             command.Parameters.AddWithValue("@Phone", TextBox6.Text);
             command.Parameters.AddWithValue("@Password", TextBox4.Text);
             this.connection.Open();
-            var result = command.ExecuteNonQuery();
-            if(result != 0)
+            int ReturnCode = (int)command.ExecuteScalar();
+            if(ReturnCode == -1)
             {
-                Label1.Text = "!!! Account Details inserted succesfully into the database !!!";
-                Label1.ForeColor = System.Drawing.Color.Green;
+                Label1.Text = "Email Id already exists, Please use another Email";
             }
             else
             {
-                Label1.Text = "!!! Details are not inserted into the database !!!";
-                Label1.ForeColor = System.Drawing.Color.Red;
+                Response.Redirect("LogIn.aspx");
             }
             this.connection.Close();
         }

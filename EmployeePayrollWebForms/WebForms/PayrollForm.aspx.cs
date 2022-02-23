@@ -88,11 +88,10 @@ namespace EmployeePayrollWebForms.WebForms
             command.Parameters.AddWithValue("@START_DATE", ddlDay.SelectedValue + "/" + ddlMonth.SelectedValue + "/" + ddlYear.SelectedValue);
             command.Parameters.AddWithValue("@NOTES", TextBox2.Text);
             connection.Open();
-            var result = command.ExecuteNonQuery();
-            if (result != 0)
-            {
-                //var datareader = command.ExecuteReader();
-                //Session["payroll"] = datareader;
+            var datareader = command.ExecuteReader();
+            if (datareader != null)
+            { 
+                Session["data"] = datareader;
                 Response.Redirect("HomePage.aspx");
                 Label8.Text = "!!! Payform Details inserted succesfully into the database !!!";
                 Label8.ForeColor = System.Drawing.Color.Green;

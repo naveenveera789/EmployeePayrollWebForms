@@ -32,7 +32,7 @@
         <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Passwords should be Same" ControlToCompare="TextBox4" ControlToValidate="TextBox5" ForeColor="Red"></asp:CompareValidator>
     </div>
     <div>
-        <asp:CheckBox ID="CheckBox2" type="checkbox" Text="Show Password" runat="server" />
+        <asp:CheckBox ID="CheckBox2" OnCheckedChanged="CheckBox2_CheckedChanged" type="checkbox" Text="Show Password" runat="server" />
     </div>
     <br />
     <div>
@@ -41,7 +41,7 @@
         <asp:Button ID="Button1" runat="server" class="btn btn-primary" Text="Sign Up" OnClick="Button1_Click" />
     </div>
     <div>
-        &ensp;<asp:Label ID="Label1" runat="server"></asp:Label>
+        &ensp;<asp:Label ID="Label1" class="labelError" ForeColor="Red" runat="server"></asp:Label>
     </div>
     </div>
 </asp:Content>

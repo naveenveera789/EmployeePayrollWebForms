@@ -110,6 +110,8 @@
     <Content Include="Assets\icons\attach_file-24px.svg" />
     <Content Include="Assets\icons\create-black-18dp.svg" />
     <Content Include="Assets\icons\delete-black-18dp.svg" />
+    <Content Include="Assets\images\cancel.png" />
+    <Content Include="Assets\images\icons8-search-48.png" />
     <Content Include="Assets\images\logo.png" />
     <Content Include="Assets\profile-images\Female %281%29.png" />
     <Content Include="Assets\profile-images\Female %282%29.png" />
